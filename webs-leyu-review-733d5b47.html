@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leyu · 日常触达</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f0f2f5;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* 卡片风格 */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e9edf2;
+      padding: 2.5rem 2.2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card + .card {
+      margin-top: 1.8rem;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    /* hero 区 */
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem 2.5rem;
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e9edf2;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #0b121f;
+    }
+
+    .hero h1 span {
+      display: inline-block;
+      background: #eef3f9;
+      padding: 0 0.5rem;
+      border-radius: 40px;
+      color: #1e3a5f;
+    }
+
+    .hero .tagline {
+      font-size: 1.25rem;
+      margin: 1.2rem 0 0.2rem;
+      color: #334155;
+      font-weight: 400;
+    }
+
+    .hero .sub {
+      color: #5b6c84;
+      font-size: 1rem;
+      max-width: 620px;
+      margin: 0.8rem auto 0;
+    }
+
+    .hero .action-hint {
+      margin-top: 2.2rem;
+      font-size: 1rem;
+      color: #3f536e;
+    }
+
+    /* 优势区 grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-item {
+      background: #ffffff;
+      border: 1px solid #e9edf2;
+      border-radius: 18px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: all 0.15s ease;
+    }
+
+    .feature-item h3 {
+      font-size: 1.2rem;
+      font-weight: 550;
+      margin-bottom: 0.5rem;
+      color: #0f1a2e;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #3d4e66;
+    }
+
+    /* 说明区：两列内容 */
+    .info-two {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .info-two > div {
+      flex: 1 1 240px;
+    }
+
+    .info-two h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #111d2f;
+    }
+
+    .info-two p {
+      color: #2b3b51;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-highlight {
+      background: #f8faff;
+      padding: 1.2rem 1.5rem;
+      border-radius: 16px;
+      border-left: 4px solid #8399b8;
+      margin: 1.2rem 0 0.6rem;
+    }
+
+    /* FAQ 摘要 */
+    .faq-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .faq-q {
+      font-weight: 550;
+      color: #0f1f33;
+      margin-bottom: 0.1rem;
+    }
+
+    .faq-a {
+      color: #3a4c66;
+      padding-left: 0.5rem;
+      border-left: 3px solid #d6dfe9;
+      padding-left: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-item {
+      padding: 0.4rem 0;
+    }
+
+    .faq-see-more {
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    /* 底部链接 */
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.8rem 0 0.6rem;
+      border-top: 1px solid #dce2ea;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #4b5d78;
+    }
+
+    .footer-links a {
+      color: #1e3a5f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式修正 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      .card {
+        padding: 1.8rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 内联链接保留自然样式 */
+    .inline-link {
+      color: #1b4a7a;
+      font-weight: 450;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #bccbd9;
+    }
+
+    .inline-link:hover {
+      color: #0a2a47;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>与 <span>leyu</span> 保持同一页</h1>
+    <p class="tagline">想快速了解一个站点是做什么的？</p>
+    <p class="sub">轻量、友善、没有多余负担 —— 这里只呈现信息本身，不打扰你的判断。</p>
+    <div class="action-hint">
+      如果你还不确定，可以先看看 <a href="https://webs--leyu.com" class="inline-link">leyu</a> 的概貌。
+    </div>
+  </div>
+
+  <!-- 优势区 卡片网格 -->
+  <div class="card">
+    <div style="margin-bottom: 0.8rem; font-weight: 500; color: #1d304b;">几个值得留意的特点</div>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>直接</h3>
+        <p>页面结构清晰，从标题到内容之间没有弯弯绕绕，一眼就能读到关键信息。</p>
+      </div>
+      <div class="feature-item">
+        <h3>安静</h3>
+        <p>无弹窗干扰、无自动播放，配色柔和。你可以按自己的节奏浏览。</p>
+      </div>
+      <div class="feature-item">
+        <h3>轻快</h3>
+        <p>不依赖大量脚本，打开迅速。无论是手机还是电脑，加载体验都利落。</p>
+      </div>
+      <div class="feature-item">
+        <h3>日常感</h3>
+        <p>界面接近人们熟悉的阅读样式，不突兀也不刻意，适合日常使用。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 说明区：多为用户考虑的内容 -->
+  <div class="card">
+    <div class="info-two">
+      <div>
+        <h2>它适合什么场景</h2>
+        <p>无论是想找某个功能入口、快速查阅说明，还是想看看这个站点的调性是否匹配你的需要，这里都留出了足够的空间让你自行判断。</p>
+        <p>没有过多的营销腔调，也没有晦涩的术语。你看到的就是实际会用到的东西。</p>
+        <div class="info-highlight">
+          <strong>一个小提醒：</strong> 因为站点保持简洁，首次访问时你可能觉得内容不多 —— 但这恰好说明它的聚焦：只提供必要信息，不冗余。
+        </div>
+      </div>
+      <div>
+        <h2>可以从哪里入手</h2>
+        <p>页面顶部的链接会直接带你到 <a href="https://webs--leyu.com" class="inline-link">leyu</a> 的首页。如果你习惯先阅读再操作，也可以继续往下看 FAQ 摘要。</p>
+        <p>大部分疑问都能在站内找到对应的段落。如果还有不清楚的地方，页面底部也留有进一步了解的线索。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要区 -->
+  <div class="card">
+    <h2 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: #0b1b2f;">一些常见疑问 · 摘要</h2>
+    <div class="faq-block">
+      <div class="faq-item">
+        <div class="faq-q">这个网站需要注册才能看内容吗？</div>
+        <div class="faq-a">不需要。访客可以直接浏览公开页面内容和信息，无需注册或登录。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">页面上的链接都靠谱吗？</div>
+        <div class="faq-a">所有链接均指向 <a href="https://webs--leyu.com" class="inline-link">leyu</a> 域名下的资源，或关联的说明段落，你可以放心点开。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">移动端浏览体验怎么样？</div>
+        <div class="faq-a">页面采用响应式设计，卡片和文字会自动适配屏幕宽度，在手机和平板上阅读同样舒适。</div>
+      </div>
+      <div class="faq-see-more">
+        · 更多细节可以进入 <a href="https://webs--leyu.com" class="inline-link">leyu</a> 直接浏览，那里有完整的说明。
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部链接 -->
+  <div class="footer-links">
+    <div>
+      <a href="https://webs--leyu.com">leyu</a> · 日常陪伴
+    </div>
+    <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
+      <span>信息页</span>
+      <a href="https://webs--leyu.com">leyu</a>
+      <span style="color: #889ab2;">简洁 · 开放</span>
+    </div>
+  </div>
+
+  <!-- 轻量占位，保持呼吸 -->
+  <div style="text-align: center; color: #8a9bb0; font-size: 0.8rem; margin-top: 2.5rem; border-top: 1px solid #e0e5ec; padding-top: 1.2rem;">
+    <span>或许你已经在使用 <a href="https://webs--leyu.com" style="color:#1d3b5c; text-decoration: none;">leyu</a> 了 —— 如果还没有，这里始终欢迎。</span>
+  </div>
+</div>
+</body>
+</html>
