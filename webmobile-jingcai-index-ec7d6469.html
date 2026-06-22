@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>竞彩网 · 轻量导航介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f7fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 0 16px 40px;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0 12px;
+            border-bottom: 1px solid #dce7ef;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #0d9488;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0d9488;
+            border-bottom-color: #0d9488;
+        }
+
+        /* hero */
+        .hero {
+            margin: 48px 0 40px;
+            background: linear-gradient(145deg, #eef9f7 0%, #d4ede8 100%);
+            border-radius: 28px;
+            padding: 48px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-left {
+            flex: 1 1 260px;
+        }
+
+        .hero-left h1 {
+            font-size: 2rem;
+            font-weight: 650;
+            color: #0f2b38;
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+
+        .hero-left p {
+            font-size: 1.05rem;
+            color: #1e3a47;
+            max-width: 480px;
+            margin-bottom: 24px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #0d9488;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .hero-right {
+            flex: 0 0 auto;
+            margin-top: 20px;
+        }
+
+        .hero-card-mock {
+            background: white;
+            border-radius: 24px;
+            padding: 20px 24px;
+            box-shadow: 0 12px 28px rgba(13, 148, 136, 0.12);
+            min-width: 200px;
+        }
+
+        .hero-card-mock span {
+            font-size: 14px;
+            color: #527a7a;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-card-mock .big-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #0d9488;
+            line-height: 1;
+            margin: 6px 0 2px;
+        }
+
+        /* 核心介绍 */
+        .intro-section {
+            margin: 48px 0 32px;
+            background: white;
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e7edf2;
+        }
+
+        .intro-section h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #0f2b38;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .intro-card {
+            background: #f3f9f7;
+            padding: 20px 18px;
+            border-radius: 20px;
+            border-left: 5px solid #0d9488;
+        }
+
+        .intro-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #0b2e34;
+        }
+
+        .intro-card p {
+            font-size: 0.95rem;
+            color: #2d4b52;
+        }
+
+        /* 三个场景模块 */
+        .scene-section {
+            margin: 48px 0 32px;
+        }
+
+        .scene-section h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: #0f2b38;
+            text-align: center;
+        }
+
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .scene-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 20px 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #e2edf2;
+            transition: transform 0.2s ease, box-shadow 0.25s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(13, 148, 136, 0.08);
+        }
+
+        .scene-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0d2c34;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #3d5a5e;
+        }
+
+        .scene-card .tag-sm {
+            display: inline-block;
+            margin-top: 14px;
+            background: #e1f2ef;
+            color: #0d6b63;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* FAQ 常见说明 */
+        .faq-section {
+            margin: 48px 0 32px;
+            background: white;
+            border-radius: 28px;
+            padding: 32px 28px;
+            border: 1px solid #dee9ee;
+        }
+
+        .faq-section h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #0f2b38;
+        }
+
+        .faq-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #e4edf2;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #16444b;
+            margin-bottom: 6px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .faq-q::before {
+            content: "❓";
+            color: #0d9488;
+        }
+
+        .faq-a {
+            font-size: 0.95rem;
+            color: #3b5b62;
+            padding-left: 26px;
+        }
+
+        /* 底部提示 */
+        .footer-note {
+            margin-top: 48px;
+            padding: 24px 0 16px;
+            border-top: 1px solid #d5e2e9;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #5b767d;
+        }
+
+        .footer-note a {
+            color: #0d9488;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 780px) {
+            .hero {
+                flex-direction: column;
+                padding: 32px 24px;
+                text-align: left;
+            }
+
+            .hero-left h1 {
+                font-size: 1.7rem;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .top-nav {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero {
+                padding: 28px 18px;
+                margin-top: 28px;
+            }
+
+            .hero-left h1 {
+                font-size: 1.5rem;
+            }
+
+            .intro-section, .faq-section {
+                padding: 24px 18px;
+            }
+
+            .logo-text {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="logo-area">
+            <span class="logo-icon">竞</span>
+            <span class="logo-text">竞彩·指南</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#intro">介绍</a></li>
+            <li><a href="#scene">场景</a></li>
+            <li><a href="#faq">说明</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero 区域 -->
+    <div class="hero">
+        <div class="hero-left">
+            <h1>稳定入口，清晰视野</h1>
+            <p>每天打开 <a href="https://webmobile-jingcai.com" style="color:#0d6b63; font-weight:600; text-decoration:underline;">竞彩网</a> 已经成为习惯。页面整洁、信息直接，不用东翻西找。</p>
+            <span class="hero-tag">📱 移动端友好 · 轻量导航</span>
+        </div>
+        <div class="hero-right">
+            <div class="hero-card-mock">
+                <span>每日访问</span>
+                <div class="big-number">7.2k+</div>
+                <span style="font-size:13px; color:#61868a;">稳定浏览体验</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="intro-section" id="intro">
+        <h2>📋 为什么把这里设为首页？</h2>
+        <div class="intro-grid">
+            <div class="intro-card">
+                <h3>🧭 直达核心</h3>
+                <p>省去多层跳转，打开 <a href="https://webmobile-jingcai.com">竞彩网</a> 后所有板块一目了然。页面布局克制，不堆砌无关内容，每次浏览都干净利落。</p>
+            </div>
+            <div class="intro-card">
+                <h3>📲 移动优先</h3>
+                <p>无论手机还是平板，文字和卡片自动适配。按钮间距舒适，单手操作也没有误触烦恼。真正把「移动端友好」做到日常。</p>
+            </div>
+            <div class="intro-card">
+                <h3>🔄 信息节奏稳定</h3>
+                <p>每日更新模块、赛事提醒、数据摘要都放在固定位置。熟悉之后就像看天气一样自然，不需要重新适应。</p>
+            </div>
+            <div class="intro-card">
+                <h3>🌿 蓝绿视觉舒缓</h3>
+                <p>主色调选用了蓝绿与浅灰白，长时间浏览不刺眼。卡片之间的留白和圆角让页面有呼吸感，看着舒服。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scene-section" id="scene">
+        <h2>🔄 三个常见使用场景</h2>
+        <div class="scene-grid">
+            <div class="scene-card">
+                <div class="scene-icon">🏠</div>
+                <h3>日常速览</h3>
+                <p>早起打开手机，快速浏览最新列表和重点提示。<a href="https://webmobile-jingcai.com">竞彩网</a> 的首页结构清晰，几秒钟就能抓住当天要点。</p>
+                <span class="tag-sm">习惯养成</span>
+            </div>
+            <div class="scene-card">
+                <div class="scene-icon">🔍</div>
+                <h3>赛前确认</h3>
+                <p>比赛开始前再核对一次数据，页面上的卡片分组让对比变得简单。不用来回切换，信息都在视口内。</p>
+                <span class="tag-sm">专注时刻</span>
+            </div>
+            <div class="scene-card">
+                <div class="scene-icon">📊</div>
+                <h3>赛后回顾</h3>
+                <p>晚些时候打开页面看总结，数据呈现直接，配合说明段落很容易理解。也是和朋友讨论时的参考基础。</p>
+                <span class="tag-sm">复盘辅助</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 常见说明 -->
+    <div class="faq-section" id="faq">
+        <h2>💬 常见说明摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">页面每天更新吗？</div>
+            <div class="faq-a">是的，内容保持每日刷新，板块数据与 <a href="https://webmobile-jingcai.com" style="color:#0d9488; text-decoration:underline;">竞彩网</a> 同步更新，你可以放心以它为参考起点。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">移动端和电脑显示一样吗？</div>
+            <div class="faq-a">布局会自适应，但核心信息和卡片位置保持一致。手机浏览器中字体和按钮会稍大一些，方便触控。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">需要注册或登录才能浏览？</div>
+            <div class="faq-a">不需要。打开页面即可阅读所有公开内容，没有任何强制登录步骤，纯粹的信息展示型设计。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">首页加载速度怎么样？</div>
+            <div class="faq-a">经过轻量化处理，没有大图片或多余脚本。即使在普通4G网络下也能在1-2秒内完整显示。</div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>日常导航 · 稳定入口</span>
+        <span>主站：<a href="https://webmobile-jingcai.com">竞彩网</a></span>
+    </div>
+
+</div>
+</body>
+</html>
