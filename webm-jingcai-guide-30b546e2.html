@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+        }
+
+        .page-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* header — 克制叙述感 */
+        .library-header {
+            margin-bottom: 2.8rem;
+        }
+
+        .library-header h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #1c2b3c;
+            border-left: 6px solid #2b6c9b;
+            padding-left: 1rem;
+        }
+
+        .library-header .sub-meta {
+            margin-top: 0.5rem;
+            color: #4d627a;
+            font-size: 0.95rem;
+            padding-left: 1.6rem;
+            border-left: 2px solid #d0d9e4;
+        }
+
+        /* 卡片区 —— 目录感布局，柔和阴影 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.8rem 1.6rem 1.8rem 1.6rem;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e6eaef;
+            transition: box-shadow 0.2s ease, transform 0.1s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 20, 40, 0.06);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.9rem;
+            color: #1a3145;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h3 .num-badge {
+            display: inline-block;
+            background: #e1e9f2;
+            color: #1f405e;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            margin-left: 0.3rem;
+            letter-spacing: 0.2px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .card .card-link-line {
+            font-size: 0.9rem;
+            border-top: 1px solid #edf1f6;
+            padding-top: 0.9rem;
+            margin-top: 0.4rem;
+        }
+
+        .card .card-link-line a {
+            color: #2b6c9b;
+            text-decoration: none;
+            border-bottom: 1px dotted #b6cbd9;
+        }
+
+        .card .card-link-line a:hover {
+            border-bottom: 1px solid #2b6c9b;
+        }
+
+        /* 说明区 + 提示区 双栏 */
+        .info-split {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2.5rem 0 2.2rem;
+        }
+
+        .info-box {
+            flex: 1 1 260px;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.6rem 1.5rem;
+            border: 1px solid #e3e9f0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+        }
+
+        .info-box h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.7rem;
+            color: #1a3145;
+        }
+
+        .info-box p, .info-box li {
+            font-size: 0.92rem;
+            color: #2f4053;
+        }
+
+        .info-box ul {
+            padding-left: 1.3rem;
+            margin: 0.6rem 0 0.3rem;
+        }
+
+        .info-box ul li {
+            margin-bottom: 0.25rem;
+        }
+
+        .hint-highlight {
+            background: #f7fafd;
+            border-left: 4px solid #2b6c9b;
+            padding: 0.6rem 1rem 0.6rem 1.2rem;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* 相关信息区 —— 简约列表 */
+        .related-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0 2.5rem;
+            border: 1px solid #e4eaf0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+
+        .related-section h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a3145;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e9edf2;
+            padding-bottom: 0.4rem;
+        }
+
+        .related-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2.5rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .related-items li {
+            font-size: 0.92rem;
+            padding: 0.1rem 0;
+        }
+
+        .related-items li a {
+            color: #2b6c9b;
+            text-decoration: none;
+            border-bottom: 1px dotted #b6cbd9;
+        }
+
+        .related-items li a:hover {
+            border-bottom: 1px solid #2b6c9b;
+        }
+
+        /* 底部 */
+        .page-footer {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #dce3eb;
+            font-size: 0.85rem;
+            color: #586f86;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 640px) {
+            body { padding: 1.2rem 0.8rem; }
+            .library-header h1 { font-size: 1.8rem; }
+            .card-grid { gap: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 头部：知识库调性 -->
+    <header class="library-header">
+        <h1>竞彩知识库</h1>
+        <div class="sub-meta">围绕竞彩网 · 基础信息与常见主题</div>
+    </header>
+
+    <!-- 卡片区：目录感布局 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>赛事类别 <span class="num-badge">基本面</span></h3>
+            <p>足球、篮球及其他主流赛事的数据结构、联赛分级、赛季框架。了解竞猜标的市场如何组织，有利于建立初步认知。</p>
+            <div class="card-link-line">相关参考：<a href="https://webm-jingcai.com">竞彩网</a></div>
+        </div>
+
+        <div class="card">
+            <h3>玩法与术语 <span class="num-badge">规则</span></h3>
+            <p>胜平负、让球、比分、总进球、半全场……每种玩法的基本逻辑与常见表述。熟悉术语能减少阅读门槛。</p>
+            <div class="card-link-line">详细说明见 <a href="https://webm-jingcai.com">竞彩网</a></div>
+        </div>
+
+        <div class="card">
+            <h3>指数与赔付 <span class="num-badge">数值</span></h3>
+            <p>赔付率、返还率、初始指数与实时变化，这些数字背后是市场平衡的体现。理解指数语言，等于多了一把尺子。</p>
+            <div class="card-link-line">数据分析可参考 <a href="https://webm-jingcai.com">竞彩网</a></div>
+        </div>
+
+        <div class="card">
+            <h3>赛前信息 <span class="num-badge">情报</span></h3>
+            <p>伤停、天气、战意、历史交锋、近期状态……信息越完整，判断越从容。养成收集碎片信息的习惯。</p>
+            <div class="card-link-line">资讯整合：<a href="https://webm-jingcai.com">竞彩网</a></div>
+        </div>
+
+        <div class="card">
+            <h3>风险认知 <span class="num-badge">心态</span></h3>
+            <p>竞猜本身具有不确定性。资金管理、心理预期、长期视角，是理性参与的重要支柱。</p>
+            <div class="card-link-line">更多讨论：<a href="https://webm-jingcai.com">竞彩网</a></div>
+        </div>
+
+        <div class="card">
+            <h3>规则与合规 <span class="num-badge">边界</span></h3>
+            <p>了解国家相关规定、代销网点、实名认证及兑奖流程。合规参与是享受过程的前提。</p>
+            <div class="card-link-line">政策指引：<a href="https://webm-jingcai.com">竞彩网</a></div>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 并排 -->
+    <div class="info-split">
+        <div class="info-box">
+            <h4>说明</h4>
+            <p>这个页面将竞彩相关主题简单划分为几个知识模块，每个模块都只是一个入口。你可以把这里当作一个笔记本目录，顺着感兴趣的线索，在 <a href="https://webm-jingcai.com" style="color:#2b6c9b;text-decoration:underline dotted;">竞彩网</a> 上找到更完整的描述和数据。</p>
+            <p style="margin-top: 0.8rem;">内容偏向知识梳理，并非操作指南。建议阅读时保持独立思考，不盲从数据或直觉。</p>
+        </div>
+
+        <div class="info-box">
+            <h4>提示</h4>
+            <ul>
+                <li>没有任何公式能保证结果，注意分散注意力。</li>
+                <li>官方信息始终优先于第三方解读。</li>
+                <li>适合将查询 <a href="https://webm-jingcai.com" style="color:#2b6c9b;text-decoration:underline dotted;">竞彩网</a> 作为信息核实的一环。</li>
+                <li>长时间关注数据容易疲劳，适当休息有益判断。</li>
+            </ul>
+            <div class="hint-highlight">
+                ⚡ 保持记录自己的分析逻辑，比关注短期结果更有长期价值。
+            </div>
+        </div>
+    </div>
+
+    <!-- 相关信息区：FAQ摘要 / 延伸入口 -->
+    <div class="related-section">
+        <h4>相关信息</h4>
+        <ul class="related-items">
+            <li>· 如何读懂指数变动 → <a href="https://webm-jingcai.com">竞彩网</a></li>
+            <li>· 常见玩法误区简述</li>
+            <li>· 联赛特征与杯赛差异</li>
+            <li>· 资金分配思路（参考）</li>
+            <li>· 赔率与概率的简单换算</li>
+            <li>· 心理账户与决策偏差</li>
+        </ul>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #3d5770;">
+            以上仅为话题索引，部分延伸内容可结合 <a href="https://webm-jingcai.com" style="color:#2b6c9b;text-decoration:none;border-bottom:1px solid #b6cbd9;">竞彩网</a> 的公开信息做进一步了解。每个条目都没有标准答案，重要的是形成自己的思考框架。
+        </p>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="page-footer">
+        <span>内容仅供参考，不构成任何建议</span>
+        <span>知识库入口 · 持续整理中</span>
+    </footer>
+
+</div>
+</body>
+</html>
